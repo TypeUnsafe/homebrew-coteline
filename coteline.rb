@@ -8,8 +8,8 @@ class Coteline < Formula
   def install
     rm_f Dir["bin/*.bat"]
 
-    man1.install Dir['doc/man/man1/*']
-    doc.install Dir['doc/*']
+    # man1.install Dir['doc/man/man1/*']
+    # doc.install Dir['doc/*']
     libexec.install Dir['*']
 
     # Symlink shell scripts but not args.sh
@@ -18,14 +18,14 @@ class Coteline < Formula
   end
 
   def caveats
-    "Ceylon requires Java 7."
+    "Coteline requires Java 7."
   end
 
   test do
     cd "#{libexec}/samples/helloworld" do
-      system "#{bin}/ceylon", "compile", "com.acme.helloworld"
-      system "#{bin}/ceylon", "doc", "--non-shared", "com.acme.helloworld"
-      system "#{bin}/ceylon", "run", "com.acme.helloworld/1.0.0", "John"
+      system "#{bin}/coteline", "compile", "com.acme.helloworld"
+      system "#{bin}/coteline", "doc", "--non-shared", "com.acme.helloworld"
+      system "#{bin}/coteline", "run", "com.acme.helloworld/1.0.0", "John"
     end
   end
 end
